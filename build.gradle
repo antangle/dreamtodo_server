@@ -1,0 +1,77 @@
+buildscript {
+	ext {
+		queryDslVersion = "5.0.0"
+	}
+}
+
+plugins {
+	id 'base'
+	id 'java'
+	id 'org.springframework.boot' version '2.7.8-SNAPSHOT'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'org.zerock'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'https://repo.spring.io/snapshot' }
+}
+
+dependencies {
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation'
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+
+	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
+	implementation "org.modelmapper:modelmapper:3.1.0"
+
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
+	implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+
+	implementation "com.google.code.gson:gson:2.8.9"
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+
+	annotationProcessor(
+
+			"javax.persistence:javax.persistence-api",
+
+			"javax.annotation:javax.annotation-api",
+
+			"com.querydsl:querydsl-apt:${queryDslVersion}:jpa")
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+//compileJava.dependsOn('clean')
+
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ["$projectDir/src/main/java", "$projectDir/build/generated"]
+		}
+	}
+}
