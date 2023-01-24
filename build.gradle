@@ -65,7 +65,7 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-//compileJava.dependsOn('clean')
+compileJava.dependsOn('clean')
 
 
 sourceSets {
