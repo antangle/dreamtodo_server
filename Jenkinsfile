@@ -9,22 +9,22 @@ pipeline {
     DOCKERHUB_HOST = "antangle"
   }
   stages {
-    stage('PreBuild') {
+    stage('Java Build') {
       steps {
-        sh 'gradle clean build'
+        sh './gradlew build'
       }
     }
-    stage('Build') {
+    stage('Docker Image Build') {
       steps {
         sh 'docker build -t $DOCKERHUB_HOST/$DOCKERHUB_URL .'
       }
     }
-    stage('Login') {
+    stage('Docker Login') {
       steps {
         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
       }
     }
-    stage('Push') {
+    stage('Docker Image Push') {
       steps {
         sh 'docker push $DOCKERHUB_HOST/$DOCKERHUB_URL'
       }
