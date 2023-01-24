@@ -5,6 +5,8 @@ pipeline {
   }
   environment {
     DOCKERHUB_CREDENTIALS = credentials('docker_hub_credentials')
+    DOCKERHUB_URL = "dreamtodo_server"
+    DOCKERHUB_HOST = "antangle"
   }
   stages {
     stage('PreBuild') {
@@ -14,7 +16,7 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'docker build -t antangle/dreamtodo_back .'
+        sh 'docker build -t $DOCKERHUB_HOST/$DOCKERHUB_URL .'
       }
     }
     stage('Login') {
@@ -24,7 +26,7 @@ pipeline {
     }
     stage('Push') {
       steps {
-        sh 'docker push antangle/dreamtodo_back'
+        sh 'docker push $DOCKERHUB_HOST/$DOCKERHUB_URL'
       }
     }
   }
