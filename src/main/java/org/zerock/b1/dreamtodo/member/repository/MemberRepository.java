@@ -1,7 +1,6 @@
-package org.zerock.b1.dreamtodo.repository;
+package org.zerock.b1.dreamtodo.member.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.zerock.b1.dreamtodo.domain.Member;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
