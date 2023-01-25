@@ -1,7 +1,8 @@
 package org.zerock.b1.dreamtodo.reply.domain;
 
 import lombok.*;
-import org.zerock.b1.dreamtodo.domain.Todo;
+import org.zerock.b1.dreamtodo.member.domain.Member;
+import org.zerock.b1.dreamtodo.todo.domain.Todo;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -30,5 +31,5 @@ public class Reply {
     private Todo todo;
 
     @ManyToOne
-    private org.zerock.b1.dreamtodo.domain.Reply reply;
+    private Member member;
 }
