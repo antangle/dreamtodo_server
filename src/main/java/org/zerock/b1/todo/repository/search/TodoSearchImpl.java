@@ -1,5 +1,7 @@
 package org.zerock.b1.todo.repository.search;
 
+/*
+
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.Tuple;
 import com.querydsl.core.types.Projections;
@@ -150,7 +152,7 @@ public class TodoSearchImpl extends QuerydslRepositorySupport implements TodoSea
 
 
 
-
+*/
 
 
 

@@ -1,5 +1,5 @@
 package org.zerock.b1.todo.service;
-
+/*
 import org.zerock.b1.common.dto.PageReqDTO;
 import org.zerock.b1.common.dto.PageResultDTO;
 import org.zerock.b1.todo.domain.Todo;
@@ -34,7 +34,7 @@ public interface TodoService {
 }
 
 
-
+*/
 
 
 

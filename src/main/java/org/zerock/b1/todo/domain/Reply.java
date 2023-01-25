@@ -1,5 +1,7 @@
 package org.zerock.b1.todo.domain;
 
+/*
+
 import lombok.*;
 import org.zerock.b1.common.domain.BaseEntity;
 
@@ -24,3 +26,5 @@ public class Reply extends BaseEntity {
 
 
 }
+
+*/

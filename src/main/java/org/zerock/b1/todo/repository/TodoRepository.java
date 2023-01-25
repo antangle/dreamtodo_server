@@ -1,5 +1,7 @@
 package org.zerock.b1.todo.repository;
 
+/*
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,3 +20,4 @@ public interface TodoRepository extends JpaRepository<Todo, Long>, TodoSearch {
             countQuery = "select count(todo) from Todo todo")
     Page<Object[]> listWithCount(Pageable pageable);
 }
+*/
