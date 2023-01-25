@@ -1,50 +1,36 @@
-package org.zerock.b1.todo.domain;
-
+package org.zerock.b1.dreamtodo.domain;
 
 import lombok.*;
-import org.zerock.b1.common.domain.BaseEntity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Set;
 
 @Entity
 @Table(name = "tbl_todo")
-@EqualsAndHashCode(callSuper=false, of="id")
+@EqualsAndHashCode(callSuper=false, of="tid")
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Todo extends BaseEntity {
+public class Todo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tno")
+    @Column(name = "tid")
     private Long id;
 
     private String title;
 
+    @Column(name = "mid")
     private String writer;
 
-    private LocalDate dueDate;
+    private String contents;
 
-    private boolean complete;
+    private LocalDate createDate;
 
-    private String str;
+    private LocalDate updateDate;
 
+    @ManyToOne
+    private Member member;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
