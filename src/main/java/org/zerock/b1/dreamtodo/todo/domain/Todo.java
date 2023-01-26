@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "tbl_todo")
-@EqualsAndHashCode(callSuper=false, of="tid")
+@EqualsAndHashCode(callSuper=false, of="id")
 @Getter
 @Builder
 @AllArgsConstructor
@@ -22,9 +22,6 @@ public class Todo {
     private Long id;
 
     private String title;
-
-    @Column(name = "mid")
-    private String writer;
 
     private String contents;
 

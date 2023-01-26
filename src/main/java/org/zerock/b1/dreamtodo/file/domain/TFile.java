@@ -1,7 +1,6 @@
-package org.zerock.b1.dreamtodo.reply.domain;
+package org.zerock.b1.dreamtodo.file.domain;
 
 import lombok.*;
-import org.zerock.b1.dreamtodo.member.domain.Member;
 import org.zerock.b1.dreamtodo.todo.domain.Todo;
 
 import javax.persistence.*;
@@ -15,14 +14,14 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Reply {
+public class TFile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "rid")
+    @Column(name = "fid")
     private Long id;
 
-    private String contents;
+    private String uuid;
 
     private LocalDate createDate;
 
@@ -30,7 +29,4 @@ public class Reply {
 
     @ManyToOne
     private Todo todo;
-
-    @ManyToOne
-    private Member member;
 }
