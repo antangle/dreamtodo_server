@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "tbl_reply")
+@Table(name = "tbl_file")
 @EqualsAndHashCode(callSuper=false, of="id")
 @Getter
 @Builder

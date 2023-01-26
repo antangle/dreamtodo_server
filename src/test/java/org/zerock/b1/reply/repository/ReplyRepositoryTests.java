@@ -32,14 +32,14 @@ public class ReplyRepositoryTests {
 
         log.info("Reply testInserts.........");
 
-        Long tid = 1L;
+        Long tid = 2L;
 
         Todo todo = todoRepository.findById(tid).get();
 
-        Member member = memberRepository.findById(todo.getMember().getId()).get();
+        Member member = memberRepository.findById(1L).get();
 
         Reply reply = Reply.builder()
-                .contents("reply contents3")
+                .contents("reply contents2-2")
                 .todo(todo)
                 .member(member)
                 .createDate(LocalDate.now())
@@ -48,5 +48,13 @@ public class ReplyRepositoryTests {
 
         log.info(replyRepository.save(reply));
 
+    }
+
+    @Test
+    public void testRemove() {
+
+        log.info("Reply testRemove......");
+
+        replyRepository.deleteById(2L);
     }
 }

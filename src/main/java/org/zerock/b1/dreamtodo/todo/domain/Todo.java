@@ -1,6 +1,7 @@
 package org.zerock.b1.dreamtodo.todo.domain;
 
 import lombok.*;
+import org.zerock.b1.dreamtodo.file.domain.TFile;
 import org.zerock.b1.dreamtodo.member.domain.Member;
 
 import javax.persistence.*;
@@ -26,6 +27,8 @@ public class Todo {
     private String contents;
 
     private LocalDate createDate;
+
+    private LocalDate regDate;
 
     private LocalDate updateDate;
 

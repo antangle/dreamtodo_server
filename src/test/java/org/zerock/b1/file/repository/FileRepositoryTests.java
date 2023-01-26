@@ -5,22 +5,39 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.zerock.b1.dreamtodo.file.domain.TFile;
+import org.zerock.b1.dreamtodo.file.repository.TFileRepository;
 import org.zerock.b1.dreamtodo.todo.domain.Todo;
+import org.zerock.b1.dreamtodo.todo.repository.TodoRepository;
+
+import java.time.LocalDate;
 
 @SpringBootTest
 @Log4j2
 public class FileRepositoryTests {
 
 
-    /*
+    @Autowired
+    private TodoRepository todoRepository;
+
+    @Autowired
+    private TFileRepository fileRepository;
+
     @Test
-    public void testInserts() {
+    public void testInsert() {
 
-        log.info("File testInserts......");
+        log.info("File testInserts.......");
 
-        Todo todo =
+        Long tid = 1L;
+
+        Todo todo = todoRepository.findById(tid).get();
 
         TFile file = TFile.builder()
-                ..build();
-    }*/
+                .uuid("uuid1")
+                .todo(todo)
+                .createDate(LocalDate.now())
+                .updateDate(LocalDate.now())
+                .build();
+
+        log.info(fileRepository.save(file));
+    }
 }
