@@ -36,7 +36,7 @@ public class ReplyRepositoryTests {
 
         Todo todo = todoRepository.findById(tid).get();
 
-        Member member = memberRepository.findById(todo.getMember().getId()).get();
+        Member member = memberRepository.findById(todo.getMember().getMid()).get();
 
         Reply reply = Reply.builder()
                 .contents("reply contents3")

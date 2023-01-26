@@ -28,6 +28,9 @@ public class TodoDTO {
     private List<Reply> replyList;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate regDate;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate createDate;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
