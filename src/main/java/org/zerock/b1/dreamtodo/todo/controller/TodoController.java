@@ -22,12 +22,12 @@ public class TodoController {
     public void getDate(@RequestBody String date) {
 
         log.info(date);
-        log.info(date.substring(1, 11));
-        getListByDate(date.substring(1, 11));
+        log.info(date.substring(0, 10));
+        getListByDate(date.substring(0, 10));
 
     }
 
-    @GetMapping("/api/todo/search")
+    @GetMapping("/todo/search")
     public PageResultDTO<Todo> getListByDate(@RequestParam String date) {
 
         log.info("------getListByDate------");

@@ -1,4 +1,4 @@
-package org.zerock.b1.dreamtodo.config;
+package org.zerock.b1.dreamtodo.common.config;
 
 
 import lombok.extern.log4j.Log4j2;
