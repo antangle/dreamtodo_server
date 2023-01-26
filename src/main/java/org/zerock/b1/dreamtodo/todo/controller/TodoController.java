@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.*;
+import org.zerock.b1.dreamtodo.todo.dto.TodoDTO;
+import org.zerock.b1.dreamtodo.todo.service.TodoService;
 
 @RestController
 @RequestMapping("/api/")
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @Log4j2
 public class TodoController {
 
+    private final TodoService todoService;
 
     @PostMapping("todo/date")
     public void getDate(@RequestBody String date) {
