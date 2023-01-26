@@ -2,10 +2,7 @@ package org.zerock.b1.dreamtodo.todo.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/")
@@ -13,6 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @Log4j2
 public class TodoController {
+
+
+    @PostMapping("todo/date")
+    public void getDate(@RequestBody String date) {
+
+        log.info(date);
+    }
 
     @GetMapping("details/{id}")
     public String get(Long id) {
