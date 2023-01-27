@@ -17,6 +17,7 @@ public class MemberRepositoryTests {
     @Autowired
     private MemberRepository memberRepository;
 
+    // tbl_member Insert Test
     @Test
     public void testInserts() {
 
