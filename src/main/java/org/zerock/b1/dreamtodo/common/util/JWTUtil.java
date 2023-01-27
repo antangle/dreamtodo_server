@@ -1,10 +1,12 @@
 package org.zerock.b1.dreamtodo.common.util;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.zerock.b1.dreamtodo.common.enums.ErrorEnum;
+import org.zerock.b1.dreamtodo.common.exceptions.JWTExceptions;
+import org.zerock.b1.dreamtodo.common.exceptions.interceptor.CustomInterceptorExceptions;
 
 import java.time.ZonedDateTime;
 import java.util.Date;
@@ -44,15 +46,38 @@ public class JWTUtil {
         return jwtStr;
     }
 
-    public Map<String, Object> validateToken(String token)throws io.jsonwebtoken.SignatureException,io.jsonwebtoken.ExpiredJwtException {
+    public Map<String, Object> validateToken(String token) throws io.jsonwebtoken.SignatureException,io.jsonwebtoken.ExpiredJwtException {
+        try{
+            Map<String, Object> claim = null;
 
-        Map<String, Object> claim = null;
-
-        claim = Jwts.parser()
-                .setSigningKey(key.getBytes()) // Set Key
-                .parseClaimsJws(token) // 파싱 및 검증, 실패 시 에러
-                .getBody();
-        return claim;
+            claim = Jwts.parser()
+                    .setSigningKey(key.getBytes()) // Set Key
+                    .parseClaimsJws(token)
+                    .getBody();
+            return claim;
+        } catch (ExpiredJwtException e){
+            throw new JWTExceptions(ErrorEnum.EXPIRED);
+        } catch (SignatureException e){
+            throw new JWTExceptions(ErrorEnum.BADSIGN);
+        } catch (MalformedJwtException e){
+            throw new JWTExceptions(ErrorEnum.MALFORM);
+        }
     }
+
+    public Map matchTokensMid(Map<String, Object> accessPayload, Map<String, Object> refreshPayload) {
+
+        if(!(accessPayload.containsKey("mid") && refreshPayload.containsKey("mid"))){
+            throw new JWTExceptions(ErrorEnum.BADSIGN);
+        }
+
+        if(!accessPayload.get("mid").equals(refreshPayload.get("mid"))){
+            throw new JWTExceptions(ErrorEnum.MISMATCH);
+        }
+
+        return Map.of("access", this.generateToken(accessPayload, 5),
+                "refresh", this.generateToken(refreshPayload, 30)
+        );
+    }
+
 }
 

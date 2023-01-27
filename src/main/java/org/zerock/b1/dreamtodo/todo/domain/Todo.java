@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "tbl_todo")
-@EqualsAndHashCode(callSuper=false, of="tid")
+@EqualsAndHashCode(callSuper=false, of="id")
 @Getter
 @Builder
 @AllArgsConstructor

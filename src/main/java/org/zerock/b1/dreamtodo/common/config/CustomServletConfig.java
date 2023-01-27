@@ -1,21 +1,22 @@
 package org.zerock.b1.dreamtodo.common.config;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.*;
+import org.zerock.b1.dreamtodo.common.interceptor.JWTInterceptor;
+import org.zerock.b1.dreamtodo.common.util.JWTUtil;
 
 @Configuration
 @EnableWebMvc
+@RequiredArgsConstructor
 public class CustomServletConfig implements WebMvcConfigurer {
 
+    private final JWTUtil jwtUtil;
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-
-/*
-        registry.addInterceptor(new TodoInterceptor())
-                .addPathPatterns("/api/todos/*");
-*/
-
+        registry.addInterceptor(new JWTInterceptor(jwtUtil))
+                .addPathPatterns("/api/auth/*");
     }
 
     @Override
@@ -33,7 +34,7 @@ public class CustomServletConfig implements WebMvcConfigurer {
                 .allowedOrigins("*")
                 .allowedMethods("HEAD", "GET", "POST", "PUT", "DELETE")
                 .maxAge(300)
-                .allowedHeaders("Authorization", "Cache-Control", "Content-Type");
+                .allowedHeaders("Authorization", "Cache-Control", "Content-Type", "Refresh-Token");
 
 
     }
