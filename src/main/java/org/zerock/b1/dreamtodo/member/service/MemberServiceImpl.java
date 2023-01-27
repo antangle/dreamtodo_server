@@ -2,13 +2,6 @@ package org.zerock.b1.dreamtodo.member.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-<<<<<<< HEAD
-import org.springframework.stereotype.Service;
-import org.zerock.b1.dreamtodo.member.dto.MemberDTO;
-import org.zerock.b1.dreamtodo.member.repository.MemberRepository;
-
-import javax.transaction.Transactional;
-=======
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.zerock.b1.dreamtodo.common.enums.ErrorEnum;
@@ -21,7 +14,6 @@ import org.zerock.b1.dreamtodo.member.repository.MemberRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;
->>>>>>> login
 
 @Service
 @Transactional
@@ -30,16 +22,6 @@ import java.util.List;
 public class MemberServiceImpl implements MemberService{
 
     private final MemberRepository memberRepository;
-<<<<<<< HEAD
-
-    @Override
-    public MemberDTO getOne(Long id) {
-
-
-        return null;
-    }
-}
-=======
     private final ModelMapper modelMapper;
 
     @Override
@@ -68,4 +50,3 @@ public class MemberServiceImpl implements MemberService{
         return memberDTO;
     }
 }
->>>>>>> login

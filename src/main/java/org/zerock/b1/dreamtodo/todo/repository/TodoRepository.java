@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.zerock.b1.dreamtodo.todo.domain.Todo;
 import org.zerock.b1.dreamtodo.todo.dto.TodoDTO;
 import org.zerock.b1.dreamtodo.todo.dto.TodoUpdateDTO;
+import org.zerock.b1.dreamtodo.todo.repository.search.TodoSearch;
 
 
 public interface TodoRepository extends JpaRepository<Todo, Long>, TodoSearch {

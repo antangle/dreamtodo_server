@@ -8,6 +8,7 @@ import org.springframework.format.FormatterRegistry;
 
 import org.springframework.web.servlet.config.annotation.*;
 import org.zerock.b1.dreamtodo.common.formatter.LocalDateFormatter;
+import org.zerock.b1.dreamtodo.common.interceptor.JWTInterceptor;
 import org.zerock.b1.dreamtodo.common.util.JWTUtil;
 
 
@@ -22,7 +23,7 @@ public class CustomServletConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new JWTInterceptor(jwtUtil))
+        registry.addInterceptor(new JWTInterceptor(jwtUtil()))
                 .addPathPatterns("/api/auth/*");
     }
 

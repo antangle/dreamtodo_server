@@ -30,8 +30,6 @@ public class Todo {
 
     private LocalDate createDate;
 
-    private LocalDate regDate;
-
     private LocalDate updateDate;
 
     @ManyToOne

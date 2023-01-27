@@ -9,6 +9,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.zerock.b1.dreamtodo.common.dto.PageReqDTO;
 import org.zerock.b1.dreamtodo.common.dto.PageResultDTO;
+import org.zerock.b1.dreamtodo.file.dto.TFileListDTO;
+import org.zerock.b1.dreamtodo.file.repository.TFileRepository;
 import org.zerock.b1.dreamtodo.reply.domain.Reply;
 import org.zerock.b1.dreamtodo.reply.dto.ReplyListDTO;
 import org.zerock.b1.dreamtodo.reply.repository.ReplyRepository;
@@ -19,6 +21,7 @@ import org.zerock.b1.dreamtodo.todo.dto.TodoUpdateDTO;
 import org.zerock.b1.dreamtodo.todo.repository.TodoRepository;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
