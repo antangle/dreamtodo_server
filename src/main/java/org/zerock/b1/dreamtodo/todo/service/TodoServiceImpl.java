@@ -3,10 +3,12 @@ package org.zerock.b1.dreamtodo.todo.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.zerock.b1.dreamtodo.file.domain.TFile;
-import org.zerock.b1.dreamtodo.file.dto.TFileListDTO;
-import org.zerock.b1.dreamtodo.file.repository.TFileRepository;
+import org.zerock.b1.dreamtodo.common.dto.PageReqDTO;
+import org.zerock.b1.dreamtodo.common.dto.PageResultDTO;
 import org.zerock.b1.dreamtodo.reply.domain.Reply;
 import org.zerock.b1.dreamtodo.reply.dto.ReplyListDTO;
 import org.zerock.b1.dreamtodo.reply.repository.ReplyRepository;
@@ -17,10 +19,9 @@ import org.zerock.b1.dreamtodo.todo.dto.TodoUpdateDTO;
 import org.zerock.b1.dreamtodo.todo.repository.TodoRepository;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -37,6 +38,25 @@ public class TodoServiceImpl implements TodoService {
     private final ModelMapper modelMapper;
 
     // Todo 상세 페이지 출력
+    @Override
+    public PageResultDTO<Todo> getListBySelectedDate(String date) {
+
+        PageReqDTO pageReqDTO = new PageReqDTO();
+
+        Pageable pageable = pageReqDTO.getPageable(Sort.by("id").descending());
+
+        Page<Todo> result = todoRepository.searchWithDate(pageable, date);
+
+        //List<Object[]>
+        List<Todo> list = result.getContent().stream().collect(Collectors.toList());
+
+        PageResultDTO<Todo> pageResult =
+                new PageResultDTO<>(list,pageable, result.getTotalElements(), result.getTotalPages() );
+
+        return pageResult;
+
+    }
+
     @Override
     public TodoDTO getOne(Long id) {
 

@@ -1,18 +1,25 @@
 package org.zerock.b1.dreamtodo.common.config;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
+
+
 import org.springframework.web.servlet.config.annotation.*;
-import org.zerock.b1.dreamtodo.common.interceptor.JWTInterceptor;
+import org.zerock.b1.dreamtodo.common.formatter.LocalDateFormatter;
 import org.zerock.b1.dreamtodo.common.util.JWTUtil;
+
 
 @Configuration
 @EnableWebMvc
-@RequiredArgsConstructor
 public class CustomServletConfig implements WebMvcConfigurer {
 
-    private final JWTUtil jwtUtil;
+    @Bean
+    public JWTUtil jwtUtil(){
+        return new JWTUtil();
+    }
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new JWTInterceptor(jwtUtil))
@@ -22,9 +29,7 @@ public class CustomServletConfig implements WebMvcConfigurer {
     @Override
     public void addFormatters(FormatterRegistry registry) {
 
-/*
         registry.addFormatter(new LocalDateFormatter());
-*/
     }
 
     @Override

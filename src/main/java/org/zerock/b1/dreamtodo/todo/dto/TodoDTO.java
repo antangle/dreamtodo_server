@@ -33,6 +33,9 @@ public class TodoDTO {
     private List<TFileListDTO> fileList;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate regDate;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate createDate;
 
     @JsonFormat(pattern = "yyyy-MM-dd")

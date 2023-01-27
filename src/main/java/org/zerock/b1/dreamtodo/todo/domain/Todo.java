@@ -26,6 +26,8 @@ public class Todo {
 
     private String contents;
 
+    private LocalDate regDate;
+
     private LocalDate createDate;
 
     private LocalDate regDate;
@@ -34,4 +36,5 @@ public class Todo {
 
     @ManyToOne
     private Member member;
+
 }

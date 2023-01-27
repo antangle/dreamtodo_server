@@ -45,4 +45,5 @@ public class MemberRepositoryTests {
             log.info("No Member id");
         }
     }
+
 }
