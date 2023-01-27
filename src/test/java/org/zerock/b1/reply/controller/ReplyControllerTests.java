@@ -10,6 +10,8 @@ import org.zerock.b1.dreamtodo.reply.dto.ReplyAddDTO;
 import org.zerock.b1.dreamtodo.reply.repository.ReplyRepository;
 import org.zerock.b1.dreamtodo.reply.service.ReplyService;
 
+import java.util.List;
+
 @SpringBootTest
 @Log4j2
 public class ReplyControllerTests {
@@ -33,9 +35,20 @@ public class ReplyControllerTests {
         ReplyAddDTO dto = ReplyAddDTO.builder()
                 .tid(1L)
                 .member(member)
-                .contents("testContents...")
+                .contents("testContents2...")
                 .build();
 
         replyService.add(dto);
+    }
+
+    @Test
+    public void testGetList() {
+
+        log.info("Reply testGetList.........");
+
+        log.info(replyRepository.getReplyList(1L));
+
+
+
     }
 }

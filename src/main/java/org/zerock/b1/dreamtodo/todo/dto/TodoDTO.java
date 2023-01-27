@@ -6,8 +6,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.zerock.b1.dreamtodo.file.domain.TFile;
+import org.zerock.b1.dreamtodo.file.dto.TFileListDTO;
 import org.zerock.b1.dreamtodo.member.domain.Member;
 import org.zerock.b1.dreamtodo.reply.domain.Reply;
+import org.zerock.b1.dreamtodo.reply.dto.ReplyListDTO;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -26,9 +28,9 @@ public class TodoDTO {
 
     private String mName;
 
-    private List<Reply> replyList;
+    private List<ReplyListDTO> replyList;
 
-    private List<TFile> fileList;
+    private List<TFileListDTO> fileList;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate createDate;

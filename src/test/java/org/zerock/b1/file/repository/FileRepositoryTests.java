@@ -27,12 +27,12 @@ public class FileRepositoryTests {
 
         log.info("File testInserts.......");
 
-        Long tid = 1L;
+        Long tid = 5L;
 
         Todo todo = todoRepository.findById(tid).get();
 
         TFile file = TFile.builder()
-                .uuid("uuid1")
+                .uuid("uuid2")
                 .todo(todo)
                 .createDate(LocalDate.now())
                 .updateDate(LocalDate.now())

@@ -5,8 +5,10 @@ import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.zerock.b1.dreamtodo.file.domain.TFile;
+import org.zerock.b1.dreamtodo.file.dto.TFileListDTO;
 import org.zerock.b1.dreamtodo.file.repository.TFileRepository;
 import org.zerock.b1.dreamtodo.reply.domain.Reply;
+import org.zerock.b1.dreamtodo.reply.dto.ReplyListDTO;
 import org.zerock.b1.dreamtodo.reply.repository.ReplyRepository;
 import org.zerock.b1.dreamtodo.todo.domain.Todo;
 import org.zerock.b1.dreamtodo.todo.dto.TodoAddDTO;
@@ -40,9 +42,9 @@ public class TodoServiceImpl implements TodoService {
 
         log.info("Todo getOne, tid: " + id);
 
-        List<Reply> replyList = replyRepository.findAll();
+        List<ReplyListDTO> replyList = replyRepository.getReplyList(id);
 
-        List<TFile> fileList = fileRepository.findAll();
+        List<TFileListDTO> fileList = fileRepository.getTFileList(id);
 
         Todo todo = todoRepository.findById(id).get();
 
@@ -87,6 +89,7 @@ public class TodoServiceImpl implements TodoService {
 
         log.info("Todo modify..........");
 
+        // 기존 Temp Entity
         Todo temp = todoRepository.findById(dto.getId()).get();
 
         Todo todo = Todo.builder()
@@ -107,7 +110,7 @@ public class TodoServiceImpl implements TodoService {
 
         log.info("Todo remove......");
 
-        replyRepository.removeReply(id);
+        //replyRepository.removeReply(id);
         fileRepository.removeTFile(id);
 
 

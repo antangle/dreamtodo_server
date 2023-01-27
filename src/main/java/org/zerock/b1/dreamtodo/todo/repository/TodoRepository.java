@@ -11,11 +11,5 @@ import org.zerock.b1.dreamtodo.todo.dto.TodoUpdateDTO;
 
 public interface TodoRepository extends JpaRepository<Todo, Long> {
 
-/*
-    @Query(value = "delete from Reply r " +
-            "where r.todo.id = :tid")
-    void removeReply(@Param("tid") Long tid);
-
- */
 
 }

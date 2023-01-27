@@ -9,4 +9,6 @@ public interface ReplyService {
     ReplyDTO add(ReplyAddDTO dto);
 
     ReplyDTO modify(ReplyUpdateDTO dto);
+
+    void remove(Long id);
 }

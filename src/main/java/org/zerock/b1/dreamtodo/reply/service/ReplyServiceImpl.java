@@ -53,7 +53,28 @@ public class ReplyServiceImpl implements ReplyService{
 
         log.info("Reply modify.......");
 
+        // 기존 Reply Entity
+        Reply temp = replyRepository.findById(dto.getId()).get();
 
-        return null;
+        Reply reply = Reply.builder()
+                .id(dto.getId())
+                .contents(dto.getContents())
+                .todo(temp.getTodo())
+                .member(temp.getMember())
+                .createDate(temp.getCreateDate())
+                .updateDate(LocalDate.now())
+                .build();
+
+        replyRepository.save(reply);
+
+        return modelMapper.map(reply, ReplyDTO.class);
+    }
+
+    @Override
+    public void remove(Long id) {
+
+        log.info("Reply remove......");
+
+        replyRepository.deleteById(id);
     }
 }
