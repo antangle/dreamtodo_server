@@ -5,21 +5,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MemberDTO {
-
-    private Long mid;
-
+public class MemberLoginDTO {
     private String name;
 
-    private String role;
-
-    private LocalDate createDate;
-
-    private LocalDate updateDate;
-
+    private String password;
 }
